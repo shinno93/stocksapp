@@ -16,7 +16,7 @@ export default function Stocks() {
   const [searchI, setSearchI] =useState ('');
   // list of industries
   let sectors = [...new Set(companyInfo.map(row=>row.sector))];
-  
+
   // table column definition
   const columns = [
     { headerName: "Symbol", field: "symbol", sortable: true, flex: 1, maxWidth: 300, cellRendererFramework: (params) => {
@@ -76,7 +76,7 @@ export default function Stocks() {
                 column={columns}
                 // set data by two search results
                 // if searchI === "", show all results (same for searchS)  
-                data={(searchI ? (searchS ? companyInfo.filter(row => row.symbol.includes(searchS)): companyInfo).filter(row => row.sector === searchI): (searchS ? companyInfo.filter(row => row.symbol.includes(searchS)): companyInfo))}
+                data={(searchI ? (searchS ? companyInfo.filter(row => row.symbol.startsWith(searchS.toUpperCase())): companyInfo).filter(row => row.sector === searchI): (searchS ? companyInfo.filter(row => row.symbol.startsWith(searchS.toUpperCase())): companyInfo))}
                 addPagination={true}
                 paginationSize = {10} />
         </Col>
