@@ -1,8 +1,8 @@
 import {useState, useEffect} from 'react'
 
-const API_KEY = 'VZ7U2NJ3NNCUGZAD'
 
 async function getStock(search){
+    const API_KEY = process.env.REACT_APP_AV_API_KEY;  
     const url=`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${search}&apikey=${API_KEY}`
     let res = await fetch(url);
     let data = await res.json();

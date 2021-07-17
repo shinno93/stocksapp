@@ -2,7 +2,9 @@ import {useState, useEffect} from 'react'
 
 
 async function getCompInfo(){
-    const url='https://financialmodelingprep.com/api/v3/nasdaq_constituent?apikey=4c91adaa6177bfa5923a8a70a8056a30'
+    const API_KEY = process.env.REACT_APP_FMP_API_KEY;
+    console.log(process.env.REACT_APP_FMP_API_KEY);
+    const url=`https://financialmodelingprep.com/api/v3/nasdaq_constituent?apikey=${API_KEY}`
     let res = await fetch(url);
     let data = await res.json();
     return data.map((company)=>({
